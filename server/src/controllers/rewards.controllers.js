@@ -1,6 +1,6 @@
 const User = require("../models/user.models");
 
-const rewards = async () => {
+const rewards = async (req,res) => {
   try {
     const { email } = req.body;
     const existUser = await User.findOne({ email });

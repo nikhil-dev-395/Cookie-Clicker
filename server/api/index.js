@@ -6,7 +6,8 @@ const app = express();
 /* FILES */
 const connectDB = require("../src/config/connectDB.config");
 const { userRouter } = require("../src/routes/user.routes.js");
-const authUser = require("../src/middlewares/auth.middleware.js");
+const { rewardsRouter } = require("../src/routes/rewards.routes.js");
+// const authUser = require("../src/middlewares/auth.middleware.js");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +15,7 @@ app.use(morgan("dev"));
 
 /*ROUTES*/
 app.use("/api/v1/user", userRouter);
-
+app.use("/api/v1/rewards", rewardsRouter);
 /*
  * just for testing purpose we are going to remove it on prod
  */
