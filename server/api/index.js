@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 /*ROUTES*/
-app.use("/api/v1/user", authUser, userRouter);
+app.use("/api/v1/user", userRouter);
 app.get("/", (req, res) => {
   res.send("hi deployment vercel");
 });
