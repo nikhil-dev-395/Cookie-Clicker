@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 /*ROUTES*/
 app.use("/api/v1/user", userRouter);
 app.get("/", (req, res) => {
-  res.send("hiii");
+  res.send("hi deployment vercel");
 });
 /*
 * whats happening here in server starting ?
