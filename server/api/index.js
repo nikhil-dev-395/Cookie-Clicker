@@ -10,13 +10,13 @@ const { rewardsRouter } = require("../src/routes/rewards.routes.js");
 const authUser = require("../src/middlewares/auth.middleware.js");
 
 app.use(express.json());
+// const corsOptions = {
+//   origin: "http://localhost:5173",
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+// };
+app.use(cors("*"));
 app.use(express.urlencoded({ extended: true }));
-const corsOptions = {
-  origin: ["http://localhost:5173"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
-app.use(cors(corsOptions));
 app.use(morgan("dev"));
 
 /*ROUTES*/
