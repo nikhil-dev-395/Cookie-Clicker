@@ -7,13 +7,15 @@ const app = express();
 const connectDB = require("../src/config/connectDB.config");
 const { userRouter } = require("../src/routes/user.routes.js");
 
-/*ROUTES*/
-app.use("/api/v1/user", userRouter);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+/*ROUTES*/
+app.use("/api/v1/user", userRouter);
+app.get("/", (req, res) => {
+  res.send("hiii");
+});
 /*
 * whats happening here in server starting ?
 ** here we adding try..catch black for error handling of listen and db connection,
