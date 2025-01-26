@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const app = express();
 
 /* FILES */
@@ -10,12 +11,12 @@ const { rewardsRouter } = require("../src/routes/rewards.routes.js");
 const authUser = require("../src/middlewares/auth.middleware.js");
 
 app.use(express.json());
-// const corsOptions = {
-//   origin: "http://localhost:5173",
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true,
-// };
-app.use(cors("*"));
+const corsOptions = {
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
+app.use(cors("*", corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
