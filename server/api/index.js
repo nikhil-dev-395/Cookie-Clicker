@@ -12,11 +12,11 @@ const authUser = require("../src/middlewares/auth.middleware.js");
 
 app.use(express.json());
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: `${process.env.REACT_APP_URL}`,
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
-app.use(cors("*", corsOptions));
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
