@@ -14,9 +14,14 @@ app.use(morgan("dev"));
 
 /*ROUTES*/
 app.use("/api/v1/user", userRouter);
+
+/*
+ * just for testing purpose we are going to remove it on prod
+ */
 app.get("/", (req, res) => {
   res.send("hi deployment vercel");
 });
+
 /*
 * whats happening here in server starting ?
 ** here we adding try..catch black for error handling of listen and db connection,

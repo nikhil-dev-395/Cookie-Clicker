@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    rewards: {
+    prizes: {
       type: Number,
       default: 0,
     },
