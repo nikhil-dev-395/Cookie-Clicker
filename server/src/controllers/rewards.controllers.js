@@ -1,6 +1,9 @@
 const User = require("../models/user.models");
 
-const rewards = async (req,res) => {
+/*
+ * with this we can create prizes and scores 
+ */
+const rewards = async (req, res) => {
   try {
     const { email } = req.body;
     const existUser = await User.findOne({ email });
@@ -51,5 +54,37 @@ const rewards = async (req,res) => {
     });
   }
 };
+/*
+ * here we are going to show this
+ */
+const getUserWithData = async (req, res) => {
+  try {
+    const email = req.user.email;
+    /*
+     * here we are going to only share scores and prizes
+     */
+    const getUser = await User.findOne({ email }).select(" scores prizes ");
 
-module.exports = { rewards };
+    if (!getUser) {
+      return res.status(404).json({
+        success: false,
+        message: "user not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "user found",
+      user: getUser,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: " error at getting user",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = { rewards, getUserWithData };

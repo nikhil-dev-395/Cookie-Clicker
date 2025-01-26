@@ -15,9 +15,13 @@ const SignUp = async (req, res) => {
     }
     const hashPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({ name, email, password: hashPassword });
-    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
+    const token = jwt.sign(
+      { userId: newUser._id, email: newUser.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1d",
+      }
+    );
 
     res.status(201).json({
       success: true,
@@ -55,9 +59,13 @@ const SignIn = async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ userId: existUser._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
+    const token = jwt.sign(
+      { userId: existUser._id, email: existUser.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1d",
+      }
+    );
 
     res.status(200).json({
       success: true,
