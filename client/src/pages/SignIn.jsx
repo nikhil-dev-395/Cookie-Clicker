@@ -24,7 +24,7 @@ const SignUp = () => {
     console.log(email, password);
     const data = { email, password };
     const apiCalling = await fetch(
-      `${import.meta.SERVER_URL}/api/v1/user/signin`,
+      `${import.meta.env.VITE_SERVER_URL}/api/v1/user/signin`,
       {
         method: "post",
         body: JSON.stringify(data),
