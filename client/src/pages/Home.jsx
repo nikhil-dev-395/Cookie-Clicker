@@ -61,8 +61,8 @@ const Home = () => {
   return (
     <section className="w-full h-auto min-h-screen">
       <div className="max-w-[1320px] mx-auto md:px-20 px-5 py-10">
-        <h3 className="text-3xl font-semibold capitalize text-gray-700">
-         {email}
+        <h3 className="text-3xl font-semibold capitalize text-gray-700 max-w-[50vw]">
+          {email}
         </h3>
 
         {/* Header */}

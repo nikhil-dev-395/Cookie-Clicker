@@ -16,7 +16,7 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
-app.use(cors(corsOptions));
+app.use(cors("*",corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 

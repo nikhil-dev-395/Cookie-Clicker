@@ -24,7 +24,7 @@ const SignUp = () => {
     console.log(name, email, password);
     const data = { name, email, password };
     const apiCalling = await fetch(
-      `${import.meta.SERVER_URL}/api/v1/user/signup`,
+      `${import.meta.env.SERVER_URL}/api/v1/user/signup`,
       {
         method: "post",
         body: JSON.stringify(data),
@@ -47,6 +47,7 @@ const SignUp = () => {
         <div className=" h-screen w-full bg-white min-h-screen mx-auto   max-w-[1320px]  ">
           <div className="md:px-20 px-5 pt-20">
             <h3 className="  text-3xl font-sans ">Sign up</h3>
+            {import.meta.env.VITE_KEY}
             <form action="" className="pt-5">
               {/* user name */}
               <div className="flex flex-col max-w-[500px] gap-y-1 mb-5">
